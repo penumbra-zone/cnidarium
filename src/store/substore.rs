@@ -410,6 +410,8 @@ impl SubstoreStorage {
                         let skip_key = |(keyhash, _key, some_value)| (keyhash, some_value);
 
                         let (root_hash, batch) = if perform_migration {
+                            // TODO(erwan): this should be feature-gated behind `migration`
+                            // activating `jmt/migration` more judiciously.
                             jmt.append_value_set(unwritten_changes.into_iter().map(skip_key), write_version)?
                         } else {
                             jmt.put_value_set(unwritten_changes.into_iter().map(skip_key), write_version)?
