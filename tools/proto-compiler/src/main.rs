@@ -37,7 +37,7 @@ fn main() -> anyhow::Result<()> {
         .emit_rerun_if_changed(false)
         .server_mod_attribute(".", rpc_doc_attr)
         .client_mod_attribute(".", rpc_doc_attr)
-        .compile_with_config(
+        .compile_protos_with_config(
             config,
             &["../../proto/penumbra/penumbra/cnidarium/v1/cnidarium.proto"],
             &["../../proto/penumbra/", "../../proto/rust-vendored/"],
