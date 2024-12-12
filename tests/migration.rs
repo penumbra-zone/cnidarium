@@ -106,7 +106,7 @@ async fn test_simple_migration() -> anyhow::Result<()> {
         .latest_snapshot()
         .root_hash()
         .await
-        .expect("infaillible");
+        .expect("infallible");
 
     for (i, (key, value)) in kvs.clone().into_iter().enumerate() {
         let snapshot = storage.latest_snapshot();
@@ -217,7 +217,7 @@ async fn test_simple_migration() -> anyhow::Result<()> {
         .latest_snapshot()
         .root_hash()
         .await
-        .expect("infaillible");
+        .expect("infallible");
 
     for (i, (key, value)) in kvs.clone().into_iter().enumerate() {
         let snapshot = storage.latest_snapshot();
@@ -252,7 +252,7 @@ async fn test_simple_migration() -> anyhow::Result<()> {
     /*      read nonexistent keys     */
     /* ****************************** */
     let final_snapshot = storage.latest_snapshot();
-    let final_root = final_snapshot.root_hash().await.expect("infaillible");
+    let final_root = final_snapshot.root_hash().await.expect("infallible");
 
     let key = format!("nonexistent_key");
     let (some_value, proof) = final_snapshot
@@ -319,7 +319,7 @@ async fn test_substore_migration() -> anyhow::Result<()> {
         .latest_snapshot()
         .root_hash()
         .await
-        .expect("infaillible");
+        .expect("infallible");
 
     for (i, (key, value)) in kvs.clone().into_iter().enumerate() {
         tracing::debug!(?key, "checking key-value pair");
@@ -381,7 +381,7 @@ async fn test_substore_migration() -> anyhow::Result<()> {
     let premigration_root_hash = premigration_snapshot
         .root_hash()
         .await
-        .expect("infaillible");
+        .expect("infallible");
     drop(premigration_snapshot);
 
     /* ******************************* */
@@ -433,7 +433,7 @@ async fn test_substore_migration() -> anyhow::Result<()> {
     let postmigration_root_hash = postmigration_snapshot
         .root_hash()
         .await
-        .expect("infaillible");
+        .expect("infallible");
 
     assert_ne!(premigration_root_hash, postmigration_root_hash);
 
@@ -571,7 +571,7 @@ async fn test_substore_migration() -> anyhow::Result<()> {
         .latest_snapshot()
         .root_hash()
         .await
-        .expect("infaillible");
+        .expect("infallible");
 
     for (i, (key, value)) in kvs.clone().into_iter().enumerate() {
         tracing::debug!(?key, "checking key-value pair");
@@ -1034,7 +1034,7 @@ mod proptests {
             .latest_snapshot()
             .root_hash()
             .await
-            .expect("infaillible");
+            .expect("infallible");
 
         // Check random keys that should not exist
         for op in nonexistence_keys {
