@@ -2,3 +2,5 @@
 
 ![Cnidarium](assets/cnidarium.jpg)
 
+Documentation at https://docs.rs/cnidarium/latest/cnidarium/
+
