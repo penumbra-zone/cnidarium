@@ -1,6 +1,6 @@
 [package]
 name = "cnidarium"
-version = "0.81.0"
+version = "0.82.0"
 authors = [
   "Penumbra Labs <team@penumbralabs.xyz>",
   "Henry de Valence <hdevalence@penumbralabs.xyz>",
