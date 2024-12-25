@@ -17,7 +17,8 @@ documentation = "https://docs.rs/cnidarium"
 migration = []
 migration-proptests = ["migration"]
 default = ["metrics"]
-rpc = ["dep:tonic", "dep:prost", "dep:serde", "dep:pbjson", "dep:ibc-proto"]
+rpc = ["proto"]
+proto = ["dep:tonic", "dep:prost", "dep:serde", "dep:pbjson", "dep:ibc-proto"]
 
 [dependencies]
 anyhow = "1.0.86"
