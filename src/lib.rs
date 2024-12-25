@@ -89,3 +89,6 @@ pub mod future;
 
 #[cfg(feature = "rpc")]
 pub mod rpc;
+
+#[cfg(feature = "proto")]
+pub mod proto;
