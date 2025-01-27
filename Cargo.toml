@@ -1,6 +1,6 @@
 [package]
 name = "cnidarium"
-version = "0.82.1"
+version = "0.83.0"
 authors = [
   "Penumbra Labs <team@penumbralabs.xyz>",
   "Henry de Valence <hdevalence@penumbralabs.xyz>",
@@ -31,7 +31,7 @@ ibc-proto = { version = "0.51.1", default-features = false, features = ["serde"]
 ibc-types = { version = "0.15.0", default-features = false, features = ["std"] }
 ics23 = "0.12.0"
 jmt = { version = "0.11", features = ["migration"] }
-metrics = { version = "0.22.3", optional = true }
+metrics = { version = "0.24", optional = true }
 once_cell = "1.19.0"
 parking_lot = "0.12.3"
 pbjson = { version = "0.7", optional = true }
