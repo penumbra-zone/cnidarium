@@ -378,10 +378,7 @@ async fn test_substore_migration() -> anyhow::Result<()> {
 
     let old_version = storage.latest_version();
     assert_eq!(old_version, num_versions_pre_migration - 1); // -1 because we start at u64::MAX
-    let premigration_root_hash = premigration_snapshot
-        .root_hash()
-        .await
-        .expect("infallible");
+    let premigration_root_hash = premigration_snapshot.root_hash().await.expect("infallible");
     drop(premigration_snapshot);
 
     /* ******************************* */
