@@ -57,38 +57,44 @@
 #![cfg_attr(docsrs, feature(doc_auto_cfg))]
 // We use `HashMap`s opportunistically.
 #![allow(clippy::disallowed_types)]
+use cfg_if::cfg_if;
 
-mod cache;
-mod delta;
-mod escaped_byte_slice;
-mod metrics;
 mod read;
-mod snapshot;
-mod snapshot_cache;
-mod storage;
-mod store;
-#[cfg(test)]
-mod tests;
-mod utils;
-mod write;
-mod write_batch;
-
-#[cfg(feature = "metrics")]
-pub use crate::metrics::register_metrics;
-pub use cache::Cache;
-pub use delta::{ArcStateDeltaExt, StateDelta};
-pub use escaped_byte_slice::EscapedByteSlice;
-pub use jmt::{ics23_spec, RootHash};
 pub use read::StateRead;
-pub use snapshot::Snapshot;
-pub use storage::{Storage, TempStorage};
+mod write;
 pub use write::StateWrite;
-pub use write_batch::StagedWriteBatch;
-
-pub mod future;
-
-#[cfg(feature = "rpc")]
-pub mod rpc;
-
 #[cfg(feature = "proto")]
 pub mod proto;
+
+cfg_if! {
+    if #[cfg(feature = "rocksdb")] {
+        mod cache;
+        mod delta;
+        mod escaped_byte_slice;
+        mod metrics;
+        mod snapshot;
+        mod snapshot_cache;
+        mod storage;
+        mod store;
+        #[cfg(test)]
+        mod tests;
+        mod utils;
+        mod write_batch;
+
+        #[cfg(feature = "metrics")]
+        pub use crate::metrics::register_metrics;
+        pub use cache::Cache;
+        pub use delta::{ArcStateDeltaExt, StateDelta};
+        pub use escaped_byte_slice::EscapedByteSlice;
+        pub use jmt::{ics23_spec, RootHash};
+        pub use snapshot::Snapshot;
+        pub use storage::{Storage, TempStorage};
+        pub use write_batch::StagedWriteBatch;
+
+        pub mod future;
+
+        #[cfg(feature = "rpc")]
+        pub mod rpc;
+
+    }
+}
