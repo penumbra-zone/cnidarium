@@ -27,8 +27,8 @@ base64 = "0.21.7"
 borsh = { version = "1.3.0" , features = ["derive", "de_strict_order"]}
 futures = "0.3.30"
 hex = "0.4.3"
-ibc-proto = { version = "0.51.1", default-features = false, features = ["serde"], optional = true }
-ibc-types = { version = "0.15.0", default-features = false, features = ["std"] }
+ibc-proto = { version = "0.52", default-features = false, features = ["serde"], optional = true }
+ibc-types = { version = "0.16", default-features = false, features = ["std"] }
 ics23 = "0.12.0"
 jmt = { version = "0.11", features = ["migration"] }
 metrics = { version = "0.24", optional = true }
