@@ -46,7 +46,7 @@ tempfile = "3.10.1"
 tendermint = { version = "0.40.0", default-features = false }
 tokio = { version = "1.38", features = ["full", "tracing"] }
 tokio-stream = "0.1.15"
-tonic = { version = "0.12.3", optional = true }
+tonic = { version = "0.13", optional = true }
 tracing = "0.1"
 
 [dev-dependencies]
