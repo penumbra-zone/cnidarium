@@ -43,15 +43,15 @@ serde = { version = "1", optional = true}
 sha2 = "0.10"
 smallvec = { version = "1.10", features = ["union", "const_generics"] }
 tempfile = "3.10.1"
-tendermint = { version = "0.40.0", default-features = false }
-tokio = { version = "1.38", features = ["full", "tracing"] }
-tokio-stream = "0.1.15"
+tendermint = { version = "0.40.3", default-features = false }
+tokio = { version = "1.44", features = ["full", "tracing"] }
+tokio-stream = "0.1.17"
 tonic = { version = "0.13", optional = true }
 tracing = "0.1"
 
 [dev-dependencies]
 tempfile = "3.10.1"
 tracing-subscriber = "0.3.18"
-tokio = { version = "1.38", features = ["full", "rt-multi-thread"] }
+tokio = { version = "1.44", features = ["full", "rt-multi-thread"] }
 proptest = "1.3.1"
 test-strategy = "0.3.1"
