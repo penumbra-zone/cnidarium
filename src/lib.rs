@@ -84,6 +84,9 @@ pub use snapshot::Snapshot;
 pub use storage::{Storage, TempStorage};
 pub use write::StateWrite;
 pub use write_batch::StagedWriteBatch;
+// We expose an internal to facilitate downstreams
+// building debug tooling.
+pub use store::substore::DbNodeKey;
 
 pub mod future;
 
