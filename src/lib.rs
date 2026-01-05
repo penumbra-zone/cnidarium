@@ -62,6 +62,7 @@ mod cache;
 mod delta;
 mod escaped_byte_slice;
 mod metrics;
+mod prune;
 mod read;
 mod snapshot;
 mod snapshot_cache;
@@ -84,9 +85,12 @@ pub use snapshot::Snapshot;
 pub use storage::{Storage, TempStorage};
 pub use write::StateWrite;
 pub use write_batch::StagedWriteBatch;
-// We expose an internal to facilitate downstreams
+// We expose internals to facilitate downstreams
 // building debug tooling.
-pub use store::substore::DbNodeKey;
+pub use store::substore::{DbNodeKey, VersionedKeyHash};
+
+// Pruning support
+pub use prune::{prune_substore, PruneConfig, PruneMode, PruneReport};
 
 pub mod future;
 
