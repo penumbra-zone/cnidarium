@@ -583,8 +583,8 @@ impl Storage {
     }
 
     /// Returns the internal handle to RocksDB, this is useful to test adjacent storage crates
-    /// or perform advanced operations.
-    pub(crate) fn db(&self) -> Arc<DB> {
+    /// or perform advanced operations like copying column families during migrations.
+    pub fn db(&self) -> Arc<DB> {
         self.0.db.clone()
     }
 
