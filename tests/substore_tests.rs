@@ -15,7 +15,7 @@ use tokio_stream::StreamExt;
 /// Test that we cannot create a storage with an empty substore prefix.
 async fn test_disallow_empty_prefix() -> () {
     let tmpdir = tempfile::tempdir().expect("creating a temporary directory works");
-    let db_path = tmpdir.into_path();
+    let db_path = tmpdir.keep();
     let substore_prefixes = vec![""].into_iter().map(|s| s.to_string()).collect();
     let _ = Storage::load(db_path, substore_prefixes).await.unwrap();
 }
@@ -25,7 +25,7 @@ async fn test_disallow_empty_prefix() -> () {
 /// that lack a delimiter e.g. `prefix_a/key` and `prefix_akey`.
 async fn test_route_key_cases() -> () {
     let tmpdir = tempfile::tempdir().expect("creating a temporary directory works");
-    let db_path = tmpdir.into_path();
+    let db_path = tmpdir.keep();
     let substore_prefixes = vec!["prefix_a", "prefix_b"]
         .into_iter()
         .map(|s| s.to_string())
@@ -72,7 +72,7 @@ async fn test_route_key_cases() -> () {
 async fn test_substore_proofs() -> anyhow::Result<()> {
     let _ = tracing_subscriber::fmt::try_init();
     let tmpdir = tempfile::tempdir()?;
-    let db_path = tmpdir.into_path();
+    let db_path = tmpdir.keep();
     let substore_prefixes = vec!["ibc", "prefix_b", "prefix_c"]
         .into_iter()
         .map(|s| s.to_string())
@@ -135,7 +135,7 @@ async fn test_substore_proofs() -> anyhow::Result<()> {
 async fn test_substore_simple() -> anyhow::Result<()> {
     let _ = tracing_subscriber::fmt::try_init();
     let tmpdir = tempfile::tempdir()?;
-    let db_path = tmpdir.into_path();
+    let db_path = tmpdir.keep();
     let substore_prefixes = vec!["prefix_a", "prefix_b", "prefix_c"]
         .into_iter()
         .map(|s| s.to_string())
@@ -222,7 +222,7 @@ async fn test_substore_simple() -> anyhow::Result<()> {
 async fn test_substore_prefix_queries() -> anyhow::Result<()> {
     let _ = tracing_subscriber::fmt::try_init();
     let tmpdir = tempfile::tempdir()?;
-    let db_path = tmpdir.into_path();
+    let db_path = tmpdir.keep();
     let substore_prefixes = vec!["prefix_a", "prefix_b", "prefix_c"]
         .into_iter()
         .map(|s| s.to_string())
@@ -334,7 +334,7 @@ async fn test_substore_prefix_queries() -> anyhow::Result<()> {
 async fn test_substore_prefix_keys() -> anyhow::Result<()> {
     let _ = tracing_subscriber::fmt::try_init();
     let tmpdir = tempfile::tempdir()?;
-    let db_path = tmpdir.into_path();
+    let db_path = tmpdir.keep();
     let substore_prefixes = vec!["prefix_a", "prefix_b", "prefix_c"]
         .into_iter()
         .map(|s| s.to_string())
@@ -447,7 +447,7 @@ async fn test_substore_prefix_keys() -> anyhow::Result<()> {
 async fn test_substore_nv_prefix() -> anyhow::Result<()> {
     let _ = tracing_subscriber::fmt::try_init();
     let tmpdir = tempfile::tempdir()?;
-    let db_path = tmpdir.into_path();
+    let db_path = tmpdir.keep();
     let substore_prefixes = vec!["prefix_a", "prefix_b", "prefix_c"]
         .into_iter()
         .map(|s| s.to_string())
@@ -573,7 +573,7 @@ async fn test_substore_nv_prefix() -> anyhow::Result<()> {
 async fn test_substore_nv_range_queries_main_store() -> anyhow::Result<()> {
     let _ = tracing_subscriber::fmt::try_init();
     let tmpdir = tempfile::tempdir()?;
-    let db_path = tmpdir.into_path();
+    let db_path = tmpdir.keep();
     let substore_prefixes = vec!["a", "b", "c", "d"]
         .into_iter()
         .map(|s| s.to_string())
@@ -686,7 +686,7 @@ async fn test_substore_nv_range_queries_main_store() -> anyhow::Result<()> {
 async fn reproduction_bad_substore_cache_range() -> anyhow::Result<()> {
     let _ = tracing_subscriber::fmt::try_init();
     let tmpdir = tempfile::tempdir()?;
-    let db_path = tmpdir.into_path();
+    let db_path = tmpdir.keep();
     // We pick a friendly prefix with high lexicographic order to help
     // with reproducing a "bad range" where the lower boundn is greater than
     // the upper bound.
