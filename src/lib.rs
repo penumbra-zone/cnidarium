@@ -90,7 +90,7 @@ pub use write_batch::StagedWriteBatch;
 pub use store::substore::{DbNodeKey, VersionedKeyHash};
 
 // Pruning support
-pub use prune::{prune_substore, PruneConfig, PruneMode, PruneReport};
+pub use prune::{prune_main_substore, prune_substore, PruneConfig, PruneMode, PruneReport};
 
 pub mod future;
 

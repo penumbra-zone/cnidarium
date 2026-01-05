@@ -192,6 +192,30 @@ fn count_nodes(db: &Arc<DB>, config: &SubstoreConfig) -> Result<u64> {
     Ok(count)
 }
 
+/// Prunes the main store's JMT to a single version.
+///
+/// This is a convenience wrapper around [`prune_substore`] for the main store (empty prefix).
+///
+/// # Returns
+/// A `PruneReport` with statistics about the pruning operation.
+pub fn prune_main_substore(
+    old_storage: &Storage,
+    old_snapshot: Snapshot,
+    new_storage: &Storage,
+    version: jmt::Version,
+    prune_config: &PruneConfig,
+) -> Result<PruneReport> {
+    let main_store_config = SubstoreConfig::new("");
+    prune_substore(
+        old_storage,
+        old_snapshot,
+        new_storage,
+        &main_store_config,
+        version,
+        prune_config,
+    )
+}
+
 /// Prunes a substore's JMT to a single version.
 ///
 /// This function reads all key-value pairs from the old database at the specified version,
