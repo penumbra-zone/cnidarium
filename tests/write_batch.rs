@@ -11,7 +11,7 @@ use tokio;
 pub async fn test_write_batch_stale_version_substores() -> Result<()> {
     let _ = tracing_subscriber::fmt::try_init();
     let tmpdir = tempfile::tempdir()?;
-    let db_path = tmpdir.into_path();
+    let db_path = tmpdir.keep();
     let substore_prefixes = vec![
         "ibc".to_string(),
         "dex".to_string(),
@@ -135,7 +135,7 @@ pub async fn test_write_batch_stale_version_substores() -> Result<()> {
 pub async fn test_two_empty_writes() -> Result<()> {
     let _ = tracing_subscriber::fmt::try_init();
     let tmpdir = tempfile::tempdir()?;
-    let db_path = tmpdir.into_path();
+    let db_path = tmpdir.keep();
     let substore_prefixes = vec![
         "ibc".to_string(),
         "dex".to_string(),
@@ -236,7 +236,7 @@ pub async fn test_two_empty_writes() -> Result<()> {
 pub async fn test_batch_substore() -> Result<()> {
     let _ = tracing_subscriber::fmt::try_init();
     let tmpdir = tempfile::tempdir()?;
-    let db_path = tmpdir.into_path();
+    let db_path = tmpdir.keep();
     let substore_prefixes = vec![
         "ibc".to_string(),
         "dex".to_string(),

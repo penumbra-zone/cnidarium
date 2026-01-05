@@ -582,9 +582,9 @@ impl Storage {
         self.commit_batch(batch)
     }
 
-    /// Returns the internal handle to RocksDB, this is useful to test adjacent storage crates.
-    #[cfg(test)]
-    pub(crate) fn db(&self) -> Arc<DB> {
+    /// Returns the internal handle to RocksDB, this is useful to test adjacent storage crates
+    /// or perform advanced operations like copying column families during migrations.
+    pub fn db(&self) -> Arc<DB> {
         self.0.db.clone()
     }
 
